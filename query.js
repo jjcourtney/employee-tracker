@@ -13,20 +13,47 @@ const db = mysql.createConnection(
     console.log(`Connected to the movies_db database.`)
   );
 
-const getUpdateSqlEmp = updateObj => {
+const addEmp = empObj => {
   
-  const {first_name, last_name, role_id, manager_id} = updateObj;
+  const {first_name, last_name, role_id, manager_id} = empObj;
 
   const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
     VALUES ("${first_name}", "${last_name}", "${role_id}", "${manager_id}")`;
   
-    doQuery(sql);  
+    doQuery(sql, "update");  
 }
 
+const addRole = addObj => {
+  
+  const {title, salary, department_id} = addObj;
 
-const logTable = (table) => {
+  const sql = `INSERT INTO role (title, department_id)
+    VALUES ("${title}", "${salary}", "${department_id}")`;
+  
+    doQuery(sql, "update");  
+}
+
+const addDepartment = addObj => {
+  
+  const {name} = addObj;
+
+  const sql = `INSERT INTO employee (name)
+    VALUES ("${name}")`;
+    
+    doQuery(sql, "update");  
+}
+
+const logTable = table => {
 
   const sql = `SELECT * FROM ${table}`;
+
+  doQuery(sql, "log");
+}
+
+const updateInfo = updateObj => {
+  const {table, column, newData, id} = updateObj;
+  const sql = `UPDATE ${table} SET ${column} = ${newData} WHERE id = ${id}`;
+
   doQuery(sql, "log");
 }
 
@@ -47,11 +74,11 @@ const doQuery = (sql, type) => {
   });
 }
 
-// const testObj = {
-//   first_name: "Peter",
-//   last_name: "Parker",
-//   role_id: 3,
-//   manager_id: 1
-// }
-// console.log(getUpdateSqlEmp(testObj))
-logTable("role") 
+
+module.exports = {
+  addEmp,
+  addRole,
+  addDepartment,
+  logTable,
+  updateInfo
+}
