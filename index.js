@@ -40,8 +40,10 @@ const handleInitResponse = async response => {
             employeeToUpdate.column = "role_id";
             
             query.updateInfo(employeeToUpdate);
-            
         }
+        default:
+            process.exit()
+        
     }
     
 }
