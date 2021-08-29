@@ -68,7 +68,7 @@ const doQuery = (sql, type) => {
         case "update": console.log(`Updated ${rows.affectedRows} row(s)!`)
           break;
       }
-      process.exit()
+      init();
        
     }
   
