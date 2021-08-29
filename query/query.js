@@ -13,7 +13,7 @@ const db = mysql.createConnection(
     console.log(`Connected to the movies_db database.`)
   );
 
-const addEmp = empObj => {
+const addEmployee = empObj => {
   
   const {first_name, last_name, role_id, manager_id} = empObj;
 
@@ -27,7 +27,7 @@ const addRole = addObj => {
   
   const {title, salary, department_id} = addObj;
 
-  const sql = `INSERT INTO role (title, department_id)
+  const sql = `INSERT INTO role (title, salary, department_id)
     VALUES ("${title}", "${salary}", "${department_id}")`;
   
     doQuery(sql, "update");  
@@ -36,8 +36,8 @@ const addRole = addObj => {
 const addDepartment = addObj => {
   
   const {name} = addObj;
-
-  const sql = `INSERT INTO employee (name)
+  console.log(addObj)
+  const sql = `INSERT INTO department (name)
     VALUES ("${name}")`;
     
     doQuery(sql, "update");  
@@ -65,9 +65,10 @@ const doQuery = (sql, type) => {
       switch (type){
         case "log":  console.table(rows)
           break;
-        case "update": cosole.log(`Updated ${rows.affectedRows} rows!`)
+        case "update": console.log(`Updated ${rows.affectedRows} row(s)!`)
           break;
       }
+      process.exit()
        
     }
   
@@ -76,7 +77,7 @@ const doQuery = (sql, type) => {
 
 
 module.exports = {
-  addEmp,
+  addEmployee,
   addRole,
   addDepartment,
   logTable,
