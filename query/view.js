@@ -1,6 +1,6 @@
-const query = require("./query");
+const { doQuery, logTable } = require("./query");
 
-const view = table => query.logTable(table);
+const view = table => logTable(table);
 
 
 const viewEmployeesByDepartment = departmentId => {
@@ -21,7 +21,7 @@ const viewEmployeesByDepartment = departmentId => {
     ON role.department_id = department.id
     WHERE role.department_id = ${departmentId}`
                 
-    query.doQuery(sql, "log")
+    doQuery(sql, "log")
 };
 
 const viewDepartmentsBudget = departmentId => {
@@ -43,7 +43,7 @@ const viewDepartmentsBudget = departmentId => {
         ON role.department_id = department.id
         WHERE role.department_id = ${departmentId}) AS total` 
 
-    query.doQuery(sql, "log")
+    doQuery(sql, "log")
 };
 
 module.exports = {

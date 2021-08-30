@@ -1,3 +1,5 @@
+const { doQuery } = require("./query");
+
 const addRole = addObj => {
   
     const {title, salary, department_id} = addObj;
@@ -6,9 +8,9 @@ const addRole = addObj => {
       VALUES ("${title}", "${salary}", "${department_id}")`;
     
       doQuery(sql, "update");  
-  }
+};
 
-  const addEmployee = empObj => {
+const addEmployee = empObj => {
   
     const {first_name, last_name, role_id, manager_id} = empObj;
   
@@ -16,9 +18,9 @@ const addRole = addObj => {
       VALUES ("${first_name}", "${last_name}", "${role_id}", "${manager_id}")`;
     
       doQuery(sql, "update");  
-  }
+};
   
-  const addDepartment = addObj => {
+const addDepartment = addObj => {
     
     const {name} = addObj;
     console.log(addObj)
@@ -26,4 +28,10 @@ const addRole = addObj => {
       VALUES ("${name}")`;
       
       doQuery(sql, "update");  
-  }
+};
+
+module.exports = {
+  addRole,
+  addEmployee,
+  addDepartment
+};
