@@ -45,10 +45,12 @@ const handleInitResponse = async response => {
             process.exit()
         
     }
-    
+
+    init();
 }
 
 const init = () => {
+    console.clear();
     promptUser(questions.initialQuestion)
     .then((userInput) => {
         handleInitResponse(userInput.actionType)
