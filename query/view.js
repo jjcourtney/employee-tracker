@@ -20,7 +20,7 @@ const viewEmployeesByDepartment = departmentId => {
     LEFT JOIN department 
     ON role.department_id = department.id
     WHERE role.department_id = ${departmentId}`
-                
+             
     doQuery(sql, "log")
 };
 
