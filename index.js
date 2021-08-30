@@ -48,11 +48,12 @@ const handleInitResponse = async response => {
     
 }
 
-  const init = () => {
+const init = () => {
     promptUser(questions.initialQuestion)
-      .then((userInput) => {
-       handleInitResponse(userInput.actionType)
-      })
-      .catch((error) => console.error(error));
+    .then((userInput) => {
+        handleInitResponse(userInput.actionType)
+        })
+    .catch((error) => console.error(error))
 }
 init();
+

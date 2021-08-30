@@ -1,6 +1,8 @@
 const mysql = require('mysql2');
 require('dotenv').config();
 
+const index = require("../index")
+
 const db = mysql.createConnection(
     {
       host: 'localhost',
@@ -48,6 +50,7 @@ const logTable = table => {
   const sql = `SELECT * FROM ${table}`;
 
   doQuery(sql, "log");
+
 }
 
 const updateInfo = updateObj => {
@@ -55,6 +58,7 @@ const updateInfo = updateObj => {
   const sql = `UPDATE ${table} SET ${column} = ${newData} WHERE id = ${id}`;
 
   doQuery(sql, "log");
+
 }
 
 const doQuery = (sql, type) => {
@@ -68,7 +72,7 @@ const doQuery = (sql, type) => {
         case "update": console.log(`Updated ${rows.affectedRows} row(s)!`)
           break;
       }
-      init();
+      
        
     }
   
