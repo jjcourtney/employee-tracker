@@ -1,9 +1,8 @@
 
 const promptUser = require("./lib/prompt");
 
+
 const intital = require("./lib/questions/initial");
-
-
 
 
 

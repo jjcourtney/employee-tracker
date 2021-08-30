@@ -1,5 +1,8 @@
 const mysql = require('mysql2');
+const cTable = require('console.table');
+
 require('dotenv').config();
+
 
 const db = mysql.createConnection(
     {
@@ -10,7 +13,7 @@ const db = mysql.createConnection(
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME
     },
-    console.log(`Connected to the movies_db database.`)
+    console.log(`Connected to the ${process.env.DB_NAME} database.`)
 );
 
 const logTable = table => {

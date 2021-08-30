@@ -18,7 +18,6 @@ const addRole = addObj => {
       doQuery(sql, "update");  
   }
   
-  
   const addDepartment = addObj => {
     
     const {name} = addObj;
