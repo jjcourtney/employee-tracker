@@ -4,6 +4,10 @@ const promptUser = require("./lib/prompt");
 
 const intital = require("./lib/questions/initial");
 
+const { handleAdd } = require("./lib/handlers/add");
+const { handleView } = require("./lib/handlers/view");
+const { handleUpdate } = require("./lib/handlers/update");
+
 
 
 // const handleInitResponse = async response => {
@@ -49,14 +53,11 @@ const intital = require("./lib/questions/initial");
 
 const handleInitResponse = async response => {
     switch (response){
-        case "View" : 
-            query.logTable("department");
+        case "View" : handleView();
             break;
-        case "Add" : 
-            query.logTable("department");
+        case "Add" : handleAdd();
             break;
-        case "Update" : 
-            query.logTable("department");
+        case "Update" : handleUpdate();
             break;
         case "Delete" : 
             query.logTable("department");
