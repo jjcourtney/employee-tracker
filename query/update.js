@@ -5,3 +5,5 @@ const updateInfo = updateObj => {
     doQuery(sql, "log");
   
   }
+
+module.exports = updateInfo;
