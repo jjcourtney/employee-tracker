@@ -1,55 +1,12 @@
 
 const promptUser = require("./lib/prompt");
 
-
 const intital = require("./lib/questions/initial");
 
 const { handleAdd } = require("./lib/handlers/add");
 const { handleView } = require("./lib/handlers/view");
 const { handleUpdate } = require("./lib/handlers/update");
-
-
-
-// const handleInitResponse = async response => {
-//     switch (response){
-//         case "view all departments" : 
-//             query.logTable("department");
-//             break;
-//         case "view all roles": 
-//             query.logTable("role");
-//             break;
-//         case "view all employees":
-//             query.logTable("employee");
-//             break; 
-//         case "add department": {
-//                 const departmentToAdd = await promptUser(questions.departmentQuestions);
-//                 query.addDepartment(departmentToAdd);
-//             };
-//             break;
-//         case "add role": {
-//             const roleToAdd = await promptUser(questions.roleQuestions);
-//             query.addRole(roleToAdd);
-//         };
-//             break;
-//         case "add employee":{
-//             const employeeToAdd = await promptUser(questions.employeeQuestions);
-//             query.addEmployee(employeeToAdd);
-//         };
-//             break;
-//         case "update employee role": {
-//             let employeeToUpdate = await promptUser(questions.updateEmployeeQuestions);
-//             employeeToUpdate.table = "employee";
-//             employeeToUpdate.column = "role_id";
-            
-//             query.updateInfo(employeeToUpdate);
-//         }
-//         default:
-//             process.exit()
-        
-//     }
-
-//     init();
-// }
+const { handleDelete } = require("./lib/handlers/delete");
 
 const handleInitResponse = async response => {
     switch (response){
@@ -59,8 +16,7 @@ const handleInitResponse = async response => {
             break;
         case "Update" : handleUpdate();
             break;
-        case "Delete" : 
-            query.logTable("department");
+        case "Delete" : handleDelete();
             break;
         default:
             process.exit()
