@@ -2,7 +2,7 @@ const { doQuery } = require("./query");
 
 const deleteRow = (id, table) => {
 
-    const sql = `DELETE FROM ${table} WHERE id = ${id}];`
+    const sql = `DELETE FROM ${table} WHERE id = ${id};`
 
     doQuery(sql, "update")
 }
