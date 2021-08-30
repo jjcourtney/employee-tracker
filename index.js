@@ -21,9 +21,10 @@ const handleInitResponse = async response => {
         default:
             process.exit()
     }
-}
 
-const askQuestions = () => {
+};
+
+const askQuestions = async () => {
     console.clear();
     promptUser(intital.initial)
     .then((userInput) => {
@@ -31,5 +32,6 @@ const askQuestions = () => {
         })
     .catch((error) => console.error(error))
 }
-askQuestions();
 
+
+askQuestions();
