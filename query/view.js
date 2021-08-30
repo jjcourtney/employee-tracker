@@ -46,7 +46,6 @@ const viewDepartmentsBudget = departmentId => {
     query.doQuery(sql, "log")
 };
 
-
 module.exports = {
     view,
     viewEmployeesByDepartment,
