@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 
-const questions = require("./lib/questions")
+const questions = require("./lib/questions/questions")
 const query = require("./query/query")
 
 
