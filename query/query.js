@@ -69,7 +69,6 @@ const doQuery = (sql, type) => {
       }
 
       db.end();      
-=======
       console.log("Use arrow key to select next option")
       
     }
