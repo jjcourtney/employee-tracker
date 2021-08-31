@@ -1,61 +1,36 @@
-const inquirer = require("inquirer");
 
-const questions = require("./lib/questions")
-const query = require("./query/query")
+const promptUser = require("./lib/prompt");
 
+const intital = require("./lib/questions/initial");
 
-const promptUser = questions => {
-    return inquirer.prompt(questions);
-  };
+const { handleAdd } = require("./lib/handlers/add");
+const { handleView } = require("./lib/handlers/view");
+const { handleUpdate } = require("./lib/handlers/update");
+const { handleDelete } = require("./lib/handlers/delete");
 
 const handleInitResponse = async response => {
     switch (response){
-        case "view all departments" : 
-            query.logTable("department");
+        case "View" : handleView();
             break;
-        case "view all roles": 
-            query.logTable("role");
+        case "Add" : handleAdd();
             break;
-        case "view all employees":
-            query.logTable("employee");
-            break; 
-        case "add department": {
-                const departmentToAdd = await promptUser(questions.departmentQuestions);
-                query.addDepartment(departmentToAdd);
-            };
+        case "Update" : handleUpdate();
             break;
-        case "add role": {
-            const roleToAdd = await promptUser(questions.roleQuestions);
-            query.addRole(roleToAdd);
-        };
+        case "Delete" : handleDelete();
             break;
-        case "add employee":{
-            const employeeToAdd = await promptUser(questions.employeeQuestions);
-            query.addEmployee(employeeToAdd);
-        };
-            break;
-        case "update employee role": {
-            let employeeToUpdate = await promptUser(questions.updateEmployeeQuestions);
-            employeeToUpdate.table = "employee";
-            employeeToUpdate.column = "role_id";
-            
-            query.updateInfo(employeeToUpdate);
-        }
         default:
             process.exit()
-        
     }
 
-    init();
-}
+};
 
-const init = () => {
+const askQuestions = () => {
     console.clear();
-    promptUser(questions.initialQuestion)
+    promptUser(intital.initial)
     .then((userInput) => {
         handleInitResponse(userInput.actionType)
         })
     .catch((error) => console.error(error))
 }
-init();
 
+askQuestions();
