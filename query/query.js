@@ -67,8 +67,7 @@ const doQuery = (sql, type) => {
         case "update": console.log(`Updated ${rows.affectedRows} row(s)!`)
           break;
       }
-      console.log("Use arrow key to select next option")
-      
+      db.end();      
     }
   });
 
